@@ -1,0 +1,16 @@
+CREATE DATABASE registro_equipos;
+USE registro_equipos;
+
+CREATE TABLE equipos (
+    id CHAR(36) PRIMARY KEY,          -- UUID para clave única
+    fecha DATE NOT NULL,
+    docente VARCHAR(100) NOT NULL,
+    asignatura VARCHAR(100) NOT NULL,
+    equipo_asignado VARCHAR(100) NOT NULL,
+    hora_inicio TIME NOT NULL,
+    hora_finaliza TIME NOT NULL,
+    ubicacion VARCHAR(100),
+    observaciones TEXT
+);
+
+//base de datos en mysql//
