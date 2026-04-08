@@ -1,0 +1,34 @@
+<?php
+include("conexion.php");
+
+$accion = $_POST['accion'];
+
+if ($accion == 'guardar') {
+    $id = uniqid(); // Genera un ID único
+    $sql = "INSERT INTO equipos (id, fecha, docente, asignatura, equipo_asignado, hora_inicio, hora_finaliza, ubicacion, observaciones)
+            VALUES ('$id', '{$_POST['fecha']}', '{$_POST['docente']}', '{$_POST['asignatura']}', '{$_POST['equipo']}', '{$_POST['hora_inicio']}', '{$_POST['hora_finaliza']}', '{$_POST['ubicacion']}', '{$_POST['observaciones']}')";
+    $conn->query($sql);
+    echo "Registro guardado correctamente";
+}
+
+if ($accion == 'actualizar') {
+    $sql = "UPDATE equipos SET 
+            fecha='{$_POST['fecha']}', 
+            docente='{$_POST['docente']}', 
+            asignatura='{$_POST['asignatura']}', 
+            equipo_asignado='{$_POST['equipo']}', 
+            hora_inicio='{$_POST['hora_inicio']}', 
+            hora_finaliza='{$_POST['hora_finaliza']}', 
+            ubicacion='{$_POST['ubicacion']}', 
+            observaciones='{$_POST['observaciones']}'
+            WHERE id='{$_POST['id']}'";
+    $conn->query($sql);
+    echo "Registro actualizado correctamente";
+}
+
+if ($accion == 'eliminar') {
+    $sql = "DELETE FROM equipos WHERE id='{$_POST['id']}'";
+    $conn->query($sql);
+    echo "Registro eliminado correctamente";
+}
+?>
